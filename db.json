@@ -1,14 +1,59 @@
 {
   "users": [
     {
-      "id": 1,
-      "nome": "Samuel",
-      "email": "samuel@example.com"
+      "id": "1",
+      "username": "Samuel",
+      "useremail": "samuel@example.com"
     },
     {
-      "id": 2,
-      "nome": "Maria",
-      "email": "maria@example.com"
+      "id": "2",
+      "username": "Maria",
+      "useremail": "maria@example.com"
+    },
+    {
+      "id": "30c1",
+      "username": "alex",
+      "useremail": "alex@durex.com"
+    },
+    {
+      "id": "3b09",
+      "username": "paulo",
+      "useremail": "paulo@txt.com"
+    },
+    {
+      "id": "dcf7",
+      "username": "Pedro",
+      "useremail": "pedro@latejano.com"
+    },
+    {
+      "id": "3c55",
+      "username": "Pedro",
+      "useremail": "pedro@latejano.com"
+    },
+    {
+      "id": "e9f0",
+      "username": "Julia",
+      "useremail": "julia@restapi.com"
+    },
+    {
+      "id": "c8b4",
+      "username": "joao",
+      "useremail": "joao@joao.com"
+    },
+    {
+      "id": "9294",
+      "username": "luiz",
+      "useremail": "luiz@luiz.com"
+    },
+    {
+      "id": "7373",
+      "username": "Braian",
+      "useremail": "Braian@braian.com"
+    },
+    {
+      "id": "30c1",
+      "username": "Pedro",
+      "userEmail": "alex@durex.com"
     }
-  ]  
+  ]
 }

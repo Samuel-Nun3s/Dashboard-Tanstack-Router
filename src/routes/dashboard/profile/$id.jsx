@@ -21,8 +21,8 @@ function UserProfile() {
   return (
     <div>
       <h3>Perfil do usuario {params.id}</h3>
-      <p><strong>Nome:</strong> {user.nome}</p>
-      <p><strong>Email:</strong> {user.email}</p>
+      <p><strong>Nome:</strong> {user.username}</p>
+      <p><strong>Email:</strong> {user.useremail}</p>
     </div>
   )
 }

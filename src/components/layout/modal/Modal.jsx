@@ -1,4 +1,4 @@
-function Modal({ name, body, actionButton, cancelButton, modalIsOpen }) {
+function Modal({ name, body, modalIsOpen }) {
   return (
     <>
       {modalIsOpen && (
@@ -8,10 +8,6 @@ function Modal({ name, body, actionButton, cancelButton, modalIsOpen }) {
           </div>
           <div>
             <h2>{body}</h2>
-          </div>
-          <div>
-            <button onClick={cancelButton}>Cancelar</button>
-            <button>{actionButton}</button>
           </div>
         </div>
       )}

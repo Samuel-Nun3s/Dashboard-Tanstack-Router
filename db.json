@@ -11,11 +11,6 @@
       "useremail": "maria@example.com"
     },
     {
-      "id": "30c1",
-      "username": "alex",
-      "useremail": "alex@durex.com"
-    },
-    {
       "id": "3b09",
       "username": "paulo",
       "useremail": "paulo@txt.com"
@@ -27,33 +22,28 @@
     },
     {
       "id": "3c55",
-      "username": "Pedro",
-      "useremail": "pedro@latejano.com"
+      "username": "Luiz",
+      "useremail": "Luiz@latejano.com"
     },
     {
       "id": "e9f0",
-      "username": "Julia",
-      "useremail": "julia@restapi.com"
+      "username": "Maria",
+      "useremail": "Maria@restapi.com"
     },
     {
-      "id": "c8b4",
-      "username": "joao",
-      "useremail": "joao@joao.com"
+      "id": "8938",
+      "username": "Kaio",
+      "useremail": "kaio@gromel.com"
     },
     {
-      "id": "9294",
-      "username": "luiz",
-      "useremail": "luiz@luiz.com"
+      "id": "62c4",
+      "username": "Tiririca",
+      "useremail": "Tiririca@pt.com"
     },
     {
-      "id": "7373",
-      "username": "Braian",
-      "useremail": "Braian@braian.com"
-    },
-    {
-      "id": "30c1",
-      "username": "Pedro",
-      "userEmail": "alex@durex.com"
+      "id": "1d4e",
+      "username": "Beatriz",
+      "useremail": "beatriz@gmail.com"
     }
   ]
 }

@@ -10,11 +10,11 @@ export const Route = createFileRoute('/dashboard/')({
 })
 
 function Dashboard() {
-  const navigate = useNavigate();
 
   const [users, setUsers] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [type, setType] = useState(null);
 
   const fetchUsers = async () => {
     const res = await fetch('http://localhost:5000/users');
@@ -30,6 +30,12 @@ function Dashboard() {
     fetchUsers()
   }, []);
 
+  function modalAddUser() {
+    setType(1);
+    setSelectedUser(null);
+    handleModal();
+  }
+
   function addUser(user) {
     console.log("user =>", user);
 
@@ -44,16 +50,57 @@ function Dashboard() {
       .then((data) => {
         console.log(data);
         fetchUsers();
-        // redirect
-        // navigate('/dashboard/', { state: { message: 'Usuario criado com sucesso!' } });
+        handleModal();
       })
       .catch(err => console.log(err));
   }
 
-  function editUser(user) {
+  function modalDeleteUser(user) {
+    console.log("deleteUser =>", user);
     setSelectedUser(user);
+    setType(2);
+    
+    handleModal();
+  }
+
+  function deleteUser(user) {
+    fetch(`http://localhost:5000/users/${user.id}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+        fetchUsers();
+        handleModal();
+      })
+      .catch(err => console.log(err));
+  }
+
+  function modalEditUser(user) {
+    setSelectedUser(user);
+    setType(3);
     console.log("user =>", user);
     handleModal();
+  }
+
+  function editUser(user) {
+    fetch(`http://localhost:5000/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+        fetchUsers();
+        handleModal();
+      })
+      .catch(err => console.log(err));
   }
 
   function handleModal() {
@@ -67,7 +114,7 @@ function Dashboard() {
         <div>
           <h2>Dashboard</h2>
           <button onClick={fetchUsers}>Atualizar</button>
-          <button onClick={handleModal}>Adicionar</button>
+          <button onClick={modalAddUser}>Adicionar</button>
         </div>
         {users.map((user) => (
           <div key={user.id}>
@@ -75,21 +122,21 @@ function Dashboard() {
               Verificar informacoes do usuario {user.username}
             </Link>
             <div>
-              <button onClick={() => editUser(user)}>Editar</button>
-              <button>Excluir</button>
+              <button onClick={() => modalEditUser(user)}>Editar</button>
+              <button onClick={() => modalDeleteUser(user)}>Excluir</button>
             </div>
           </div>
         ))}
       </div>
       <Modal
-        name="Adicionar novo usuario"
+        name={type == 1 ? "Adicionar usuario" : (type == 2 ? "Deletar usuario" : "Editar usuario")}
         body={<ModalBody 
-          handleSubmit={addUser}
+          handleSubmit={type == 1 ? addUser : (type == 2 ? deleteUser : editUser)}
           cancelButton={handleModal}
-          textButton="Adicionar"
+          textButton={type == 1 ? "Adicionar" : (type == 2 ? "Deletar" : "Editar")}
           selectedUser={selectedUser}
+          type={type}
         />}
-        actionButton={addUser}
         modalIsOpen={modalIsOpen}
       />
     </>

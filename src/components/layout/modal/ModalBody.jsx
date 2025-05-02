@@ -1,51 +1,66 @@
 import { useEffect, useState } from "react";
 
-function ModalBody({handleSubmit, handleOnChange, userData, cancelButton, textButton, selectedUser}) {
+import Input from "../../form/Input";
+import Button from "../../form/Button";
+
+function ModalBody({handleSubmit, handleOnChange, userData, cancelButton, textButton, selectedUser, type}) {
 
   const [username, setUsername] = useState('');
-  const [userEmail, setUserEmail] = useState('');
+  const [useremail, setUseremail] = useState('');
 
   const submit = (e) => {
     e.preventDefault();
-    handleSubmit({ id: selectedUser?.id, username, userEmail });
+    handleSubmit({ id: selectedUser?.id, username, useremail });
   }
 
   useEffect(() => {
     if (selectedUser) {
       setUsername(selectedUser.username);
-      setUserEmail(selectedUser.useremail);
+      setUseremail(selectedUser.useremail);
     } else {
       setUsername('');
-      setUserEmail('');
+      setUseremail('');
     }
   }, [selectedUser]);
 
   return (
     <form onSubmit={submit}>
-      <div>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Nome do usuario"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <input
-          type="email"
-          name="useremail"
-          id="useremail"
-          placeholder="Email do usuario"
-          value={userEmail}
-          onChange={(e) => setUserEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <button>{textButton}</button>
-        <button onClick={cancelButton}>Cancelar</button>
-      </div>
+      {type == 2 ? 
+        <div>
+          <p>Tem certeza em excluir o usuario:</p>
+          <p>{username}</p>
+        </div> : 
+        <>
+          <div>
+            <Input 
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Nome do usuario"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div>
+            <Input
+              type="email"
+              name="useremail"
+              id="useremail"
+              placeholder="Email do usuario"
+              value={useremail}
+              onChange={(e) => setUseremail(e.target.value)}
+            />
+          </div>
+        </>}
+        <div>
+          <Button 
+            text={textButton}
+          />
+          <Button 
+            text="Cancelar"
+            action={cancelButton}
+          />
+        </div>
     </form>
   )
 }

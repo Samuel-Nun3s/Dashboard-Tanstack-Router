@@ -2,25 +2,39 @@ import { Link } from "@tanstack/react-router";
 
 import Button from "../form/Button";
 
+import { FaHome, FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { MdSpaceDashboard } from "react-icons/md";
+import { IoMdSettings } from "react-icons/io";
+
+import styles from "./Aside.module.css";
+import { useState } from "react";
+
 function Aside() {
+
+  const [asideIsOpen, setAsideIsOpen] = useState(true);
+
+  function openAside() {
+    setAsideIsOpen(!asideIsOpen);
+  }
+
   return (
-    <>
+    <aside className={`${styles.aside} ${asideIsOpen ? "" : styles.close}`}>
       <nav>
         <Link to="/">
-          Home
+          <FaHome />
         </Link>
         <Link to="/dashboard">
-          Dashboard
+          <MdSpaceDashboard />
         </Link>
         <Link to="/settings">
-          Settings
+          <IoMdSettings />
         </Link>
       </nav>
       <Button 
-        text="Menu"
+        text={asideIsOpen ? <FaArrowLeft /> : <FaArrowRight />}
         action={openAside}
       />
-    </>
+    </aside>
   )
 }
 

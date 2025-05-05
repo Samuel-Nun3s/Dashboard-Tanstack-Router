@@ -1,0 +1,40 @@
+.aside {
+  height: 100%;
+  background-color: #260E59;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: .4s;
+}
+
+.aside nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.aside a {
+  font-size: 3em;
+  text-decoration: none;
+  color: #05C7F2;
+  transition: .3s;
+}
+
+.aside a:hover {
+  color: #056CF2;
+}
+
+.aside button {
+  translate: 60%;
+  font-size: 2em;
+  display: flex;
+}
+
+.close {
+  translate: -100%;
+}

@@ -11,7 +11,7 @@ import { useState } from "react";
 
 function Aside() {
 
-  const [asideIsOpen, setAsideIsOpen] = useState(true);
+  const [asideIsOpen, setAsideIsOpen] = useState(false);
 
   function openAside() {
     setAsideIsOpen(!asideIsOpen);
@@ -30,7 +30,7 @@ function Aside() {
           <IoMdSettings />
         </Link>
       </nav>
-      <Button 
+      <Button
         text={asideIsOpen ? <FaArrowLeft /> : <FaArrowRight />}
         action={openAside}
       />

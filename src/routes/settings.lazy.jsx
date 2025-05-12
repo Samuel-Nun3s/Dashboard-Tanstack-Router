@@ -1,21 +1,34 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 
+import DefaultDiv from '../components/layout/DefaultDiv';
+
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa6";
+
+import styles from './settings.module.css';
+
 export const Route = createLazyFileRoute('/settings')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
   return (
-    <div>
-      <div>
-        <h1>Settings</h1>
-      </div>
-      <div>
-        <h2>Desenvolvido por:</h2>
-        <h3>Samuel Nunes</h3>
-        <h3><a href="https://www.linkedin.com/in/samuel-nunes-5b4b72270/" target='blank'>Linkedin</a></h3>
-        <h3><a href="https://github.com/Samuel-Nun3s" target='blank'>Github</a></h3>
-      </div>
+    <div className={styles.settings}>
+      <DefaultDiv>
+        <DefaultDiv
+          customClass="subdiv"
+        >
+          <h1>Settings</h1>
+        </DefaultDiv>
+        <DefaultDiv
+          customClass="subdiv"
+        >
+          <h2>Developed by:</h2>
+          <h3>Samuel Nunes</h3>
+          <a href="https://www.linkedin.com/in/samuel-nunes-5b4b72270/" target='blank'><FaLinkedin/></a>
+          <a href="https://github.com/Samuel-Nun3s" target='blank'><FaGithub/></a>
+        </DefaultDiv>
+      </DefaultDiv>
     </div>
   )
 }

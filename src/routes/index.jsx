@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import DefaultDiv from '../components/layout/DefaultDiv';
+
 import styles from "./index.module.css";
 
 export const Route = createFileRoute('/')({
@@ -9,7 +11,7 @@ export const Route = createFileRoute('/')({
 function Index() {
   return (
     <div className={styles.home}>
-      <div className={styles.defaultDiv}>
+      <DefaultDiv>
         <h1>Welcome to the Dashboard</h1>
         <div>
           <p>
@@ -28,7 +30,7 @@ function Index() {
             Feel free to explore every feature. This is another step toward mastering development with React!
           </p>
         </div>
-      </div>
+      </DefaultDiv>
     </div>
   )
 }

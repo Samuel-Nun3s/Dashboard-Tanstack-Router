@@ -7,8 +7,8 @@
     },
     {
       "id": "2",
-      "username": "Maria",
-      "useremail": "maria@example.com"
+      "username": "Julia",
+      "useremail": "julia@example.com"
     },
     {
       "id": "3b09",
@@ -26,24 +26,24 @@
       "useremail": "Luiz@latejano.com"
     },
     {
-      "id": "e9f0",
-      "username": "Maria",
-      "useremail": "Maria@restapi.com"
-    },
-    {
-      "id": "8938",
-      "username": "Kaio",
-      "useremail": "kaio@gromel.com"
-    },
-    {
       "id": "62c4",
       "username": "Tiririca",
       "useremail": "Tiririca@pt.com"
     },
     {
-      "id": "1d4e",
-      "username": "Beatriz",
-      "useremail": "beatriz@gmail.com"
+      "id": "4bcf",
+      "username": "Ana",
+      "useremail": "ana@banana.com"
+    },
+    {
+      "id": "5dde",
+      "username": "Agiota",
+      "useremail": "Tigrinho@jogodobicho.com"
+    },
+    {
+      "id": "4666",
+      "username": "Anderson",
+      "useremail": "anderson@javascript.com"
     }
   ]
 }

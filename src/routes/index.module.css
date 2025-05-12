@@ -23,3 +23,10 @@
 .home p, h1 {
   color: white;
 }
+
+.defaultDiv {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #260E59;
+  box-shadow: 1px 1px 10px black;
+}

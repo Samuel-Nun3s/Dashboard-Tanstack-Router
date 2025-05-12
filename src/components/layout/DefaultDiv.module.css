@@ -1,0 +1,25 @@
+.defaultDiv {
+  margin: 10px;
+  padding: 15px;
+  border-radius: 20px;
+  background-color: #260E59;
+  box-shadow: 1px 1px 10px black;
+  text-align: center;
+}
+
+.subdiv {
+  margin: 5px;
+  background-color: #5D04D9;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}

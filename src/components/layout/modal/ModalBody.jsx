@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Input from "../../form/Input";
 import Button from "../../form/Button";
 
+import styles from './ModalBody.module.css';
+
 function ModalBody({handleSubmit, handleOnChange, userData, cancelButton, textButton, selectedUser, type}) {
 
   const [username, setUsername] = useState('');
@@ -27,8 +29,8 @@ function ModalBody({handleSubmit, handleOnChange, userData, cancelButton, textBu
     <form onSubmit={submit}>
       {type == 2 ? 
         <div>
-          <p>Tem certeza em excluir o usuario:</p>
-          <p>{username}</p>
+          <h3 className={styles.deleteText}>Tem certeza em excluir o usuario:</h3>
+          <p className={styles.deleteText}>{username}</p>
         </div> : 
         <>
           <div>
@@ -36,7 +38,7 @@ function ModalBody({handleSubmit, handleOnChange, userData, cancelButton, textBu
               type="text"
               name="username"
               id="username"
-              placeholder="Nome do usuario"
+              placeholder="Nome"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -46,7 +48,7 @@ function ModalBody({handleSubmit, handleOnChange, userData, cancelButton, textBu
               type="email"
               name="useremail"
               id="useremail"
-              placeholder="Email do usuario"
+              placeholder="Email"
               value={useremail}
               onChange={(e) => setUseremail(e.target.value)}
             />

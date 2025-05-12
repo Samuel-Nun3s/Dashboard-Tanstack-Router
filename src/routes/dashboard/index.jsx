@@ -5,6 +5,13 @@ import Modal from '../../components/layout/modal/Modal';
 import ModalBody from '../../components/layout/modal/ModalBody';
 import { header } from 'server/reply';
 
+import styles from './index.module.css';
+import DefaultDiv from '../../components/layout/DefaultDiv';
+import Button from '../../components/form/Button';
+
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
+
 export const Route = createFileRoute('/dashboard/')({
   component: Dashboard
 })
@@ -12,11 +19,15 @@ export const Route = createFileRoute('/dashboard/')({
 function Dashboard() {
 
   const [users, setUsers] = useState(null);
+  const [totalUsers, setTotalUsers] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [type, setType] = useState(null);
 
   const fetchUsers = async () => {
+    setTimeout(() => {
+      
+    });
     const res = await fetch('http://localhost:5000/users');
     if (!res.ok) return null;
 
@@ -24,10 +35,11 @@ function Dashboard() {
     // console.log("Coleta dos usuarios =>", data);
 
     setUsers(data);
+    setTotalUsers(data.length);
   }
 
   useEffect(() => {
-    fetchUsers()
+      fetchUsers()
   }, []);
 
   function modalAddUser() {
@@ -110,23 +122,41 @@ function Dashboard() {
 
   return (
     <>
-      <div>
-        <div>
+      <div className={styles.dashboard}>
+        <DefaultDiv>
           <h2>Dashboard</h2>
-          <button onClick={fetchUsers}>Atualizar</button>
-          <button onClick={modalAddUser}>Adicionar</button>
-        </div>
-        {users.map((user) => (
-          <div key={user.id}>
-            <Link to={`/dashboard/profile/${user.id}`}>
-              Verificar informacoes do usuario {user.username}
-            </Link>
-            <div>
-              <button onClick={() => modalEditUser(user)}>Editar</button>
-              <button onClick={() => modalDeleteUser(user)}>Excluir</button>
-            </div>
-          </div>
-        ))}
+          <DefaultDiv
+            customClass="subdiv"
+          >
+            <h2>Total de usuarios</h2>
+            <h3>{totalUsers}</h3>
+          </DefaultDiv>
+          <Button 
+            action={fetchUsers}
+            text="Atualizar"
+          />
+          <Button 
+            action={modalAddUser}
+            text="Adicionar"
+          />
+        </DefaultDiv>
+        <DefaultDiv>
+          {users.map((user) => (
+            <DefaultDiv
+              customClass="subdiv"
+              key={user.id}
+              direction="row"
+            >
+              <Link to={`/dashboard/profile/${user.id}`}>
+                {user.username}
+              </Link>
+              <div className={styles.usersActions}>
+                <button className={styles.editButton} onClick={() => modalEditUser(user)}><FaEdit /></button>
+                <button className={styles.deleteButton} onClick={() => modalDeleteUser(user)}><MdDeleteForever /></button>
+              </div>
+            </DefaultDiv>
+          ))}
+        </DefaultDiv>
       </div>
       <Modal
         name={type == 1 ? "Adicionar usuario" : (type == 2 ? "Deletar usuario" : "Editar usuario")}

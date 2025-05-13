@@ -29,7 +29,7 @@ function ModalBody({handleSubmit, handleOnChange, userData, cancelButton, textBu
     <form onSubmit={submit}>
       {type == 2 ? 
         <div>
-          <h3 className={styles.deleteText}>Tem certeza em excluir o usuario:</h3>
+          <h3 className={styles.deleteText}>Are you sure about deleting the user:</h3>
           <p className={styles.deleteText}>{username}</p>
         </div> : 
         <>
@@ -38,7 +38,7 @@ function ModalBody({handleSubmit, handleOnChange, userData, cancelButton, textBu
               type="text"
               name="username"
               id="username"
-              placeholder="Nome"
+              placeholder="Name"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -59,7 +59,7 @@ function ModalBody({handleSubmit, handleOnChange, userData, cancelButton, textBu
             text={textButton}
           />
           <Button 
-            text="Cancelar"
+            text="Cancel"
             action={cancelButton}
           />
         </div>

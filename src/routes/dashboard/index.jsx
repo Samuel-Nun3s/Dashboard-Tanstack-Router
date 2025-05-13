@@ -128,16 +128,16 @@ function Dashboard() {
           <DefaultDiv
             customClass="subdiv"
           >
-            <h2>Total de usuarios</h2>
+            <h2>Total users</h2>
             <h3>{totalUsers}</h3>
           </DefaultDiv>
           <Button 
             action={fetchUsers}
-            text="Atualizar"
+            text="to Update"
           />
           <Button 
             action={modalAddUser}
-            text="Adicionar"
+            text="To add"
           />
         </DefaultDiv>
         <DefaultDiv>
@@ -159,11 +159,11 @@ function Dashboard() {
         </DefaultDiv>
       </div>
       <Modal
-        name={type == 1 ? "Adicionar usuario" : (type == 2 ? "Deletar usuario" : "Editar usuario")}
+        name={type == 1 ? "Add user" : (type == 2 ? "Delete user" : "Edit user")}
         body={<ModalBody 
           handleSubmit={type == 1 ? addUser : (type == 2 ? deleteUser : editUser)}
           cancelButton={handleModal}
-          textButton={type == 1 ? "Adicionar" : (type == 2 ? "Deletar" : "Editar")}
+          textButton={type == 1 ? "Add" : (type == 2 ? "Delete" : "Edit")}
           selectedUser={selectedUser}
           type={type}
         />}

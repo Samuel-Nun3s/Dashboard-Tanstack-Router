@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useLoaderData, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useEffect, useState } from 'react';
 
 import Modal from '../../components/layout/modal/Modal';
@@ -25,17 +25,17 @@ function Dashboard() {
   const [type, setType] = useState(null);
 
   const fetchUsers = async () => {
-    setTimeout(() => {
-      
-    });
-    const res = await fetch('http://localhost:5000/users');
-    if (!res.ok) return null;
+      setUsers(null);
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-    const data = await res.json();
-    // console.log("Coleta dos usuarios =>", data);
+      const res = await fetch('http://localhost:5000/users');
+      if (!res.ok) return null;
+  
+      const data = await res.json();
+      console.log("Coleta dos usuarios =>", data);
 
-    setUsers(data);
-    setTotalUsers(data.length);
+      setUsers(data);
+      setTotalUsers(data.length);  
   }
 
   useEffect(() => {
@@ -118,7 +118,6 @@ function Dashboard() {
   function handleModal() {
     setModalIsOpen(!modalIsOpen);
   }
-  if (!users) return <p>Carregando usuários...</p>
 
   return (
     <>
@@ -141,21 +140,23 @@ function Dashboard() {
           />
         </DefaultDiv>
         <DefaultDiv>
-          {users.map((user) => (
-            <DefaultDiv
-              customClass="subdiv"
-              key={user.id}
-              direction="row"
-            >
-              <Link to={`/dashboard/profile/${user.id}`}>
-                {user.username}
-              </Link>
-              <div className={styles.usersActions}>
-                <button className={styles.editButton} onClick={() => modalEditUser(user)}><FaEdit /></button>
-                <button className={styles.deleteButton} onClick={() => modalDeleteUser(user)}><MdDeleteForever /></button>
-              </div>
-            </DefaultDiv>
-          ))}
+          {!users ? <p>Loading users...</p> :
+            users.map((user) => (
+              <DefaultDiv
+                customClass="subdiv"
+                key={user.id}
+                direction="row"
+              >
+                <Link to={`/dashboard/profile/${user.id}`}>
+                  {user.username}
+                </Link>
+                <div className={styles.usersActions}>
+                  <button className={styles.editButton} onClick={() => modalEditUser(user)}><FaEdit /></button>
+                  <button className={styles.deleteButton} onClick={() => modalDeleteUser(user)}><MdDeleteForever /></button>
+                </div>
+              </DefaultDiv>
+            ))
+          }
         </DefaultDiv>
       </div>
       <Modal

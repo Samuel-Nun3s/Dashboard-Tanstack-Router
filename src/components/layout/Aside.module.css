@@ -40,3 +40,13 @@
 .close {
   translate: -100%;
 }
+
+@media (min-width: 1455px ) {
+  .aside button {
+    display: none;
+  }
+
+  .aside {
+    width: 118px;
+  }
+}
